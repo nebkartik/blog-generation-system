@@ -15,11 +15,13 @@ os.environ['LANGSMITH_API_KEY'] = os.getenv('LANGSMITH_API_KEY')
 async def blogs_generation(request:Request):
     data = await request.json()
     topic = data.get("topic","")
+    language = data.get("language","")
     llm = GroqLLM().get_llm()
     graph = GraphBuilder(llm)
     if topic:
      graph = graph.set_graph_function(usecase="topic")
-     state = graph.invoke({'topic':topic})
+     state = graph.invoke({'topic':topic,
+                           'current_language':language})
     
     return {'data':state}
 
