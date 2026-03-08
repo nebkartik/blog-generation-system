@@ -1,1 +1,1 @@
-Hi
+Agentic Blog Generation Project
