@@ -1,7 +1,11 @@
 from pydantic import BaseModel, Field
 
 
-class Users(BaseModel):
+class UserLoginState(BaseModel):
+    name:str = Field(description="User Name")
+    email:str = Field(description="User Email")
+
+class UserState(BaseModel):
     id: int
     name:str = Field(description="User Name")
     email:str = Field(description="User Email")
@@ -12,7 +16,7 @@ class ShowBlog(BaseModel):
     title:str = Field(description="Blog Title")
     content:str = Field(description="Blog Content")
     user_id: int = Field(description="User ID")
-    user: Users
+    user: UserState
 
 
 class BlogState(BaseModel):
@@ -21,6 +25,8 @@ class BlogState(BaseModel):
     content:str = Field(description="Blog Content")
     user_id: int = Field(description="User ID")
     # creator: Users
-    
-    class Config:
-        orm_mode = True
+    model_config = {
+    "from_attributes": True  # New V2 style
+    }
+    # class Config:
+    #     orm_mode = True

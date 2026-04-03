@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import FastAPI,Request
+from fastapi_project import FastAPI,Request
 import os
 from dotenv import load_dotenv
 from src.graphs.graphbuilder import GraphBuilder

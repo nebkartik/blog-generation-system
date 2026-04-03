@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request, Body
+from fastapi_project import FastAPI, Request, Body
 import uvicorn
 from pydantic import BaseModel, Field
 import json
